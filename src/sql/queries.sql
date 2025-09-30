@@ -106,3 +106,22 @@ FROM observations
     JOIN species ON observations.species_id = species.id
     GROUP BY region_name, species.scientific_name
     ORDER BY total DESC;
+
+-- LEVEL 4
+-- MISSION 13. Insert a new fictitious observation into the observations table.;
+
+INSERT INTO observations (
+    species_id, region_id, observer, observation_date, latitude, longitude, count)
+VALUES (
+    15, 8, 'obsr_test', '1995-06-16', -15.157692, 95.576485, -3);
+
+-- MISSION 14. Correct the scientific name of a species with a typo.
+
+UPDATE species
+SET scientific_name = 'Corvus coronoides'  
+WHERE scientific_name = 'Corvis coronoides';
+
+-- MISSION 15. Delete a test observation (use its id).
+
+DELETE FROM observations
+WHERE id = 35;
