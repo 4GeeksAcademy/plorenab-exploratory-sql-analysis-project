@@ -20,14 +20,14 @@ SELECT * FROM species;
 SELECT * FROM climate;
 SELECT * FROM observations;
 
-
+-- LEVEL 1
 -- MISSION 1 What are the first 10 recorded observations?;
 
 SELECT * 
 FROM observations
 LIMIT 10;
 
--- LEVEL 1
+
 -- MISSION 2. Which region identifiers (region_id) appear in the data?;
 
 SELECT DISTINCT region_id
@@ -84,14 +84,14 @@ GROUP BY observer
 ORDER BY count_observations DESC;
 
 -- LEVEL 3.
--- MISSION 10. Show the region name (regions.name) for each observation.;
+-- MISSION 10. Show the region name (regions.name) for each observation;
 
 SELECT observations.id AS observation_id, regions.name AS region_name
 FROM observations
     JOIN regions
     ON observations.region_id = regions.id;
 
--- MISSION 11. Show the scientific name of each recorded species (species.scientific_name).;
+-- MISSION 11. Show the scientific name of each recorded species (species.scientific_name);
 
 SELECT observations.id AS observation_id, species.scientific_name 
 FROM observations
@@ -108,20 +108,20 @@ FROM observations
     ORDER BY total DESC;
 
 -- LEVEL 4
--- MISSION 13. Insert a new fictitious observation into the observations table.;
+-- MISSION 13. Insert a new fictitious observation into the observations table;
 
 INSERT INTO observations (
     species_id, region_id, observer, observation_date, latitude, longitude, count)
 VALUES (
     15, 8, 'obsr_test', '1995-06-16', -15.157692, 95.576485, -3);
 
--- MISSION 14. Correct the scientific name of a species with a typo.
+-- MISSION 14. Correct the scientific name of a species with a typo;
 
 UPDATE species
 SET scientific_name = 'Corvus coronoides'  
 WHERE scientific_name = 'Corvis coronoides';
 
--- MISSION 15. Delete a test observation (use its id).
+-- MISSION 15. Delete a test observation (use its id);
 
 DELETE FROM observations
 WHERE id = 35;
